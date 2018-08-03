@@ -1,0 +1,17 @@
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\obj\Debug\RaiseFlag.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\RaiseFlag.BLL.dll.config
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\RaiseFlag.BLL.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\RaiseFlag.BLL.pdb
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\Dapper.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\RaiseFlag.DAL.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\StructureMap.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\System.Device.Portable.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\RaiseFlag.DAL.pdb
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\Dapper.xml
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\bin\Debug\StructureMap.xml
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\obj\Debug\RaiseFlag.BLL.dll
+C:\Users\Esraa\Documents\Visual Studio 2015\Projects\RaiseFlagApi\RaiseFlag.BLL\obj\Debug\RaiseFlag.BLL.pdb

@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RaiseFlagModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RaiseFlagEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(RaiseFlagModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(RaiseFlagModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="AddRequests" EntityType="RaiseFlagModel.AddRequest" />
+    <EntitySet Name="Countries" EntityType="RaiseFlagModel.Country" />
+    <EntitySet Name="Genders" EntityType="RaiseFlagModel.Gender" />
+    <EntitySet Name="Groups" EntityType="RaiseFlagModel.Group" />
+    <EntitySet Name="OutOfRegionLogs" EntityType="RaiseFlagModel.OutOfRegionLog" />
+    <EntitySet Name="Roles" EntityType="RaiseFlagModel.Role" />
+    <EntitySet Name="StatusRequests" EntityType="RaiseFlagModel.StatusRequest" />
+    <EntitySet Name="sysdiagrams" EntityType="RaiseFlagModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="RaiseFlagModel.User" />
+    <EntitySet Name="UsersGroups" EntityType="RaiseFlagModel.UsersGroup" />
+    <EntitySet Name="UsersLocations" EntityType="RaiseFlagModel.UsersLocation" />
+    <AssociationSet Name="FK_AddRequests_Groups" Association="RaiseFlagModel.FK_AddRequests_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="AddRequest" EntitySet="AddRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddRequests_StatusRequest" Association="RaiseFlagModel.FK_AddRequests_StatusRequest">
+      <End Role="StatusRequest" EntitySet="StatusRequests" />
+      <End Role="AddRequest" EntitySet="AddRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddRequests_Users" Association="RaiseFlagModel.FK_AddRequests_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AddRequest" EntitySet="AddRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Countries" Association="RaiseFlagModel.FK_Users_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Gender" Association="RaiseFlagModel.FK_Users_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Groups_Users" Association="RaiseFlagModel.FK_Groups_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutOfRegionLogs_Groups" Association="RaiseFlagModel.FK_OutOfRegionLogs_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="OutOfRegionLog" EntitySet="OutOfRegionLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersGroup_Groups" Association="RaiseFlagModel.FK_UsersGroup_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UsersGroup" EntitySet="UsersGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersLocation_Groups" Association="RaiseFlagModel.FK_UsersLocation_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UsersLocation" EntitySet="UsersLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersLocation_Groups1" Association="RaiseFlagModel.FK_UsersLocation_Groups1">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UsersLocation" EntitySet="UsersLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OutOfRegionLogs_Users" Association="RaiseFlagModel.FK_OutOfRegionLogs_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="OutOfRegionLog" EntitySet="OutOfRegionLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersGroup_Roles" Association="RaiseFlagModel.FK_UsersGroup_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UsersGroup" EntitySet="UsersGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersGroup_Users" Association="RaiseFlagModel.FK_UsersGroup_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersGroup" EntitySet="UsersGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersLocation_Users" Association="RaiseFlagModel.FK_UsersLocation_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersLocation" EntitySet="UsersLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersLocation_Users1" Association="RaiseFlagModel.FK_UsersLocation_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersLocation" EntitySet="UsersLocations" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="AddRequest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="GroupID" Type="Int64" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="RaiseFlagModel.FK_AddRequests_Groups" FromRole="AddRequest" ToRole="Group" />
+    <NavigationProperty Name="StatusRequest" Relationship="RaiseFlagModel.FK_AddRequests_StatusRequest" FromRole="AddRequest" ToRole="StatusRequest" />
+    <NavigationProperty Name="User" Relationship="RaiseFlagModel.FK_AddRequests_Users" FromRole="AddRequest" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="RaiseFlagModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="RaiseFlagModel.FK_Users_Gender" FromRole="Gender" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HashedPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="AdminID" Type="Int64" Nullable="false" />
+    <Property Name="DiffDistance" Type="Double" Nullable="false" />
+    <NavigationProperty Name="AddRequests" Relationship="RaiseFlagModel.FK_AddRequests_Groups" FromRole="Group" ToRole="AddRequest" />
+    <NavigationProperty Name="User" Relationship="RaiseFlagModel.FK_Groups_Users" FromRole="Group" ToRole="User" />
+    <NavigationProperty Name="OutOfRegionLogs" Relationship="RaiseFlagModel.FK_OutOfRegionLogs_Groups" FromRole="Group" ToRole="OutOfRegionLog" />
+    <NavigationProperty Name="UsersGroups" Relationship="RaiseFlagModel.FK_UsersGroup_Groups" FromRole="Group" ToRole="UsersGroup" />
+    <NavigationProperty Name="UsersLocations" Relationship="RaiseFlagModel.FK_UsersLocation_Groups" FromRole="Group" ToRole="UsersLocation" />
+    <NavigationProperty Name="UsersLocations1" Relationship="RaiseFlagModel.FK_UsersLocation_Groups1" FromRole="Group" ToRole="UsersLocation" />
+  </EntityType>
+  <EntityType Name="OutOfRegionLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="GroupID" Type="Int64" Nullable="false" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Distance" Type="Double" />
+    <Property Name="LostTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Group" Relationship="RaiseFlagModel.FK_OutOfRegionLogs_Groups" FromRole="OutOfRegionLog" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="RaiseFlagModel.FK_OutOfRegionLogs_Users" FromRole="OutOfRegionLog" ToRole="User" />
+    <Property Name="HasReported" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UsersGroups" Relationship="RaiseFlagModel.FK_UsersGroup_Roles" FromRole="Role" ToRole="UsersGroup" />
+  </EntityType>
+  <EntityType Name="StatusRequest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AddRequests" Relationship="RaiseFlagModel.FK_AddRequests_StatusRequest" FromRole="StatusRequest" ToRole="AddRequest" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HashedPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="Birthdate" Type="DateTime" Precision="0" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmergencyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassportID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedIP" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Pic" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GenderID" Type="Int32" />
+    <Property Name="ApplicationID" Type="Int32" />
+    <Property Name="RememberToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RememberTokenExpire" Type="DateTime" Precision="3" />
+    <Property Name="DeviceToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AddRequests" Relationship="RaiseFlagModel.FK_AddRequests_Users" FromRole="User" ToRole="AddRequest" />
+    <NavigationProperty Name="Country" Relationship="RaiseFlagModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
+    <NavigationProperty Name="Gender" Relationship="RaiseFlagModel.FK_Users_Gender" FromRole="User" ToRole="Gender" />
+    <NavigationProperty Name="Groups" Relationship="RaiseFlagModel.FK_Groups_Users" FromRole="User" ToRole="Group" />
+    <NavigationProperty Name="OutOfRegionLogs" Relationship="RaiseFlagModel.FK_OutOfRegionLogs_Users" FromRole="User" ToRole="OutOfRegionLog" />
+    <NavigationProperty Name="UsersGroups" Relationship="RaiseFlagModel.FK_UsersGroup_Users" FromRole="User" ToRole="UsersGroup" />
+    <NavigationProperty Name="UsersLocations" Relationship="RaiseFlagModel.FK_UsersLocation_Users" FromRole="User" ToRole="UsersLocation" />
+    <NavigationProperty Name="UsersLocations1" Relationship="RaiseFlagModel.FK_UsersLocation_Users1" FromRole="User" ToRole="UsersLocation" />
+  </EntityType>
+  <EntityType Name="UsersGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Tracked" Type="Boolean" Nullable="false" />
+    <Property Name="Notified" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="RaiseFlagModel.FK_UsersGroup_Groups" FromRole="UsersGroup" ToRole="Group" />
+    <NavigationProperty Name="Role" Relationship="RaiseFlagModel.FK_UsersGroup_Roles" FromRole="UsersGroup" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="RaiseFlagModel.FK_UsersGroup_Users" FromRole="UsersGroup" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UsersLocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="GroupID" Type="Int64" Nullable="false" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Distance" Type="Double" />
+    <NavigationProperty Name="Group" Relationship="RaiseFlagModel.FK_UsersLocation_Groups" FromRole="UsersLocation" ToRole="Group" />
+    <NavigationProperty Name="Group1" Relationship="RaiseFlagModel.FK_UsersLocation_Groups1" FromRole="UsersLocation" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="RaiseFlagModel.FK_UsersLocation_Users" FromRole="UsersLocation" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="RaiseFlagModel.FK_UsersLocation_Users1" FromRole="UsersLocation" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_AddRequests_Groups">
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="RaiseFlagModel.AddRequest" Role="AddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddRequest">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddRequests_StatusRequest">
+    <End Type="RaiseFlagModel.StatusRequest" Role="StatusRequest" Multiplicity="1" />
+    <End Type="RaiseFlagModel.AddRequest" Role="AddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusRequest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddRequest">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddRequests_Users">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.AddRequest" Role="AddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddRequest">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Countries">
+    <End Type="RaiseFlagModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Gender">
+    <End Type="RaiseFlagModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Groups_Users">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutOfRegionLogs_Groups">
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="RaiseFlagModel.OutOfRegionLog" Role="OutOfRegionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OutOfRegionLog">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersGroup_Groups">
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersGroup" Role="UsersGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersGroup">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersLocation_Groups">
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersLocation" Role="UsersLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersLocation">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersLocation_Groups1">
+    <End Type="RaiseFlagModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersLocation" Role="UsersLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersLocation">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OutOfRegionLogs_Users">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.OutOfRegionLog" Role="OutOfRegionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OutOfRegionLog">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersGroup_Roles">
+    <End Type="RaiseFlagModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersGroup" Role="UsersGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersGroup">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersGroup_Users">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersGroup" Role="UsersGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersGroup">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersLocation_Users">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersLocation" Role="UsersLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersLocation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersLocation_Users1">
+    <End Type="RaiseFlagModel.User" Role="User" Multiplicity="1" />
+    <End Type="RaiseFlagModel.UsersLocation" Role="UsersLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersLocation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
